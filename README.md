@@ -36,3 +36,44 @@ income for next year's tax season.
     3. Taking daily net profits and automatically storing them in memory of the app and in the database at midnight or on user's command
 5. Database:
     1. MongoDB 
+
+
+<!-- {/* // import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg' */}
+{/* <div>
+<a href="https://vitejs.dev" target="_blank">
+  <img src={viteLogo} className="logo" alt="Vite logo" />
+</a>
+<a href="https://react.dev" target="_blank">
+  <img src={reactLogo} className="logo react" alt="React logo" />
+</a>
+</div> */}
+{/* // <button onClick={() => setCount((count) => count + 1)}>
+// count is {count}
+// </button>
+// <p>
+//   Edit <code>src/App.jsx</code> and save to test HMR
+</p> */}
+<>
+
+{/* <h1>Money Hero</h1>
+<div className="card">
+  {itemOrService.map((itemOrService, index) => 
+  <div className='input-container' key={index}>
+    <input 
+      name = 'Item/Service'
+      type="text"
+      value={itemOrService}
+    onChange={(e) => handleChange(e, index)}
+    />
+  )}
+  </div>
+  {index === inputs.length - 1 && (
+    <button onClick={() => handleInput()}>
+      Add
+    </button>
+    )}
+  <div className='body'>{JSON.stringify(itemOrService)}</div>
+</div>
+</>
+) */} -->

@@ -4,19 +4,18 @@ import './App.css'
 // https://dev.to/okafor__mary/how-to-dynamically-add-input-fields-on-button-click-in-reactjs-5298#:~:text=Create%20A%20React%20Component&text=First%2C%20we%20initialized%20the%20inputs,manage%20our%20input%20field%20values.
 
 function App() {
-  const [service, setService] = useState([{name: ""}])
+  const [service, setService] = useState([""])
   const [price, setPrice] = useState([0])
-  // let Service = [setService]
-  // let Price = [setPrice]
 
-  const handleInput = () => {
+
+  const handleService = () => {
     setService(...service, [{ service: '' }])
     setPrice(...price, [{price: ''}])
   }
 
   const handleChange = (e, index) => {
     let { service, value} = e.target
-    let onChangeValue = [...service]
+    let onChangeValue = [service]
     onChangeValue[index][service] = value
     setService(onChangeValue)
   }
@@ -47,14 +46,8 @@ function App() {
               value={service.name}
               onChange={(e) => handleChange(e, index)}
             />
-            {service.length > 1 && (
-              <button onClick={() => handleDeleteInput(index)}>Delete</button>
-            )}
-            {service.length - 1 && (
-              <button onClick={() => handleInput(index)}>Submit</button>
-            )}
             <input
-              name='amnt'
+              name='Price'
               type='text'
               value={price.name}
               onChange={(e) => handleChange(e, index)}
@@ -62,9 +55,13 @@ function App() {
             {service.length > 1 && (
               <button onClick={() => handleDeleteInput(index)}>Delete</button>
             )}
+            {index === service.length - 1 && (
+              <button onClick={() => handleService(index)}>Submit</button>
+            )}
             {price.length > 1 && (
               <button onClick={() => handlePrice(index)}>Submit</button>
             )}
+
           </div>
         ))}
       <div className="body"> {JSON.stringify(service)} </div>

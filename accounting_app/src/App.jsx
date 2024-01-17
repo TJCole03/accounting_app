@@ -1,65 +1,73 @@
 import { useState } from 'react'
+import AddDynamicInputFields from './goo'
 import './App.css'
 // https://dev.to/okafor__mary/how-to-dynamically-add-input-fields-on-button-click-in-reactjs-5298#:~:text=Create%20A%20React%20Component&text=First%2C%20we%20initialized%20the%20inputs,manage%20our%20input%20field%20values.
 
 function App() {
-  const [itemOrService, setItemOrService] = useState(['Item/Service'])
-  const [totalPrice, setTotalPrice] = useState([0])
+  const [service, setService] = useState([{name: ""}])
+  const [price, setPrice] = useState([0])
+  // let Service = [setService]
+  // let Price = [setPrice]
 
   const handleInput = () => {
-    setItemOrService([...itemOrService, {itemOrService: ''}])
+    setService(...service, [{ service: '' }])
+    setPrice(...price, [{price: ''}])
   }
 
   const handleChange = (e, index) => {
-    let { itemOrService, value} = e.target
-    let onChangeValue = [...itemOrService]
-    onChangeValue[index][itemOrService] = value
-    setItemOrService(onChangeValue)
+    let { service, value} = e.target
+    let onChangeValue = [...service]
+    onChangeValue[index][service] = value
+    setService(onChangeValue)
   }
   
   const handlePrice = (e, index) => {
-    let { totalPrice, value } = e.target
-    let onChangeValue = [...totalPrice]
-    onChangeValue[index][itemOrService] = value
-    setTotalPrice(onChangeValue)
+    let { price, value } = e.target
+    let onChangeValue = [...price]
+    onChangeValue[index][service] = value
+    setPrice(onChangeValue)
 }
 
   const handleDeleteInput = (index) => {
-    const newArray = [...itemOrService]
+    const newArray = [...service]
     newArray.splice(index, 1);
-    setItemOrService(newArray)
+    setService(newArray)
 }
 
   return (
     <>
+      <AddDynamicInputFields/>
       <h1>Money Hero</h1>
       <div className="machine">
-        {itemOrService.map((itemOrService, index) => (
+        {service.map((service, index) => (
           <div className='container' key={index}>
-            <itemOrService
+            <input
               name="Item/Service"
               type='text'
-              value={itemOrService.name}
-              onChange={(e) => handleChange(e, index)}
-              />
-            <totalPrice
-              name='amnt'
-              type='text'
-              value={totalPrice.name}
+              value={service.name}
               onChange={(e) => handleChange(e, index)}
             />
-            {itemOrService.length > 1 && (
+            {service.length > 1 && (
               <button onClick={() => handleDeleteInput(index)}>Delete</button>
             )}
-            {itemOrService.length - 1 && (
+            {service.length - 1 && (
               <button onClick={() => handleInput(index)}>Submit</button>
             )}
-            {totalPrice.length > 1 && (
+            <input
+              name='amnt'
+              type='text'
+              value={price.name}
+              onChange={(e) => handleChange(e, index)}
+            />
+            {service.length > 1 && (
+              <button onClick={() => handleDeleteInput(index)}>Delete</button>
+            )}
+            {price.length > 1 && (
               <button onClick={() => handlePrice(index)}>Submit</button>
             )}
           </div>
         ))}
-      <div className="body"> {JSON.stringify(itemOrService)} </div>
+      <div className="body"> {JSON.stringify(service)} </div>
       </div>
     </>
   )

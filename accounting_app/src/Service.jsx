@@ -1,28 +1,38 @@
 import { useState } from "react";
 
-function AddDynamicInputFields() {
-    const [inputs, setInputs] = useState([{ firstName: "", lastName: "" }]);
-
+function ServiceField() {
+    const [service, setService] = useState([""])
+    // const [price, setPrice] = useState([0])
+  
+  
     const handleAddInput = () => {
-        setInputs([...inputs, { firstName: "", lastName: "" }]);
-    };
-
-    const handleChange = (event, index) => {
-        let { name, value } = event.target;
-        let onChangeValue = [...inputs];
-        onChangeValue[index][name] = value;
-        setInputs(onChangeValue);
-    };
-
+      setService(...service, [{ service: '' }])
+    //   setPrice(...price, [{price: ''}])
+    }
+  
+    const handleChange = (e, index) => {
+      let { service, value} = e.target
+      let onChangeValue = [service]
+      onChangeValue[index][service] = value
+      setService(onChangeValue)
+    }
+    
+//     const handlePrice = (e, index) => {
+//       let { price, value } = e.target
+//       let onChangeValue = [...price]
+//       onChangeValue[index][service] = value
+//       setPrice(onChangeValue)
+//   }
+  
     const handleDeleteInput = (index) => {
-        const newArray = [...inputs];
-        newArray.splice(index, 1);
-        setInputs(newArray);
-    };
+      const newArray = [...service]
+      newArray.splice(index, 1);
+      setService(newArray)
+  }
 
     return (
         <div className="container">
-            {inputs.map((item, index) => (
+            {service.map((item, index) => (
                 <div className="input_container" key={index}>
                     <input
                         name="firstName"
@@ -36,18 +46,18 @@ function AddDynamicInputFields() {
                         value={item.lastName}
                         onChange={(event) => handleChange(event, index)}
                     />
-                    {inputs.length > 1 && (
+                    {service.length > 1 && (
                         <button onClick={() => handleDeleteInput(index)}>Delete</button>
                     )}
-                    {index === inputs.length - 1 && (
+                    {index === service.length - 1 && (
                         <button onClick={() => handleAddInput()}>Add</button>
                     )}
                 </div>
             ))}
 
-            <div className="body"> {JSON.stringify(inputs)} </div>
+            <div className="body"> {JSON.stringify(service)} </div>
         </div>
     )
 }
 
-export default AddDynamicInputFields
+export default ServiceField

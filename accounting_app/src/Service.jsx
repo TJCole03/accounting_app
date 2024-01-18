@@ -3,11 +3,13 @@ import { useState } from "react";
 
 function ServiceField() {
     // const [date, setDate] = useState({Date})
+    const [entry, setEntry] = useState([{ service: "", price: "" }])
     const [service, setService] = useState("")
     const [price, setPrice] = useState([0])
   
   
     const handleAddInput = () => {
+      setEntry([...entry, { service: '', price: ''}])  
       setService(...service, [{ service: '' }])
       setPrice(...price, [{price: ''}])
     }
@@ -17,14 +19,15 @@ function ServiceField() {
       let onChangeValue = [service]
       onChangeValue[index][service] = service
       setService(onChangeValue)
+      
     }
     
-//     const handlePrice = (e, index) => {
-//       let { price, value } = e.target
-//       let onChangeValue = [...price]
-//       onChangeValue[index][service] = value
-//       setPrice(onChangeValue)
-//   }
+   const handlePrice = (e, index) => {
+      let { price, value } = e.target
+      let onChangeValue = [...price]
+      onChangeValue[index][service] = value
+      setPrice(onChangeValue)
+  }
   
     const handleDeleteInput = (index) => {
       const newArray = [...service]
@@ -63,7 +66,10 @@ function ServiceField() {
                         <button onClick={() => handleDeleteInput()}>Delete</button>
                     )}
                     { service.length - 1 && (
-                        <button onClick={() => handleAddInput()}>Add</button>
+                        <button onClick={() => handleAddInput()}>Submit Service</button>
+                    )}
+                    { service.length - 1 && (
+                        <button onClick={() => handlePrice()}>Submit Price</button>
                     )}
                 </div>
             {/* )) */}

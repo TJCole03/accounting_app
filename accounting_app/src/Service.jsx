@@ -77,6 +77,7 @@ function ServiceField() {
                     type='number'
                     required
                 />
+                <button>Submit</button>
             </form>
       </div>
   )

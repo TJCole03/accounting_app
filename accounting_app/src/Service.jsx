@@ -2,13 +2,13 @@ import { useState } from "react";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
-    const [inputs, setInputs] = useState(['']);
+    const [inputs, setInputs] = useState('');
     const index = []
+    console.log(index, [index])
 
   const handleAddInput = (index) => {
     setInputs([...inputs, { service: "", price: "" }]);
-      inputs.map(([index]))
-      console.log('clicked' [index], index)
+      inputs.push([index])
   };
 
 //   const handleChange = (event, index) => {
@@ -83,7 +83,7 @@ function ServiceField() {
                     required
                     // onChange={(event) => handleChange(event, index)}
                     />
-                <button onClick={() => handleAddInput(index)} >Submit</button>
+                <button onClick={() => handleAddInput(inputs)} >Submit</button>
                 
                 </form>   
       </div>

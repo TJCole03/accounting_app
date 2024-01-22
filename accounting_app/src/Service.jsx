@@ -22,43 +22,67 @@ function ServiceField() {
   };
 
 
-  return (
-    <div className="container">
-      {inputs.map((item, index) => (
-          <div className="input_container" key={index}>
-         <h3>Date: </h3> 
-          <input
-            name="service"
-            type="Date"
-            value={item.date}
-            onChange={(event) => handleChange(event, index)}
-              />
-         <h3>Service: </h3> 
-          <input
-            name="Service: "
-            type="text"
-            value={item.service}
-            onChange={(event) => handleChange(event, index)}
-              />
-         <h3>Price: </h3> 
-          <input
-            name="Price: "
-            type='text'
-            value={item.price}
-            onChange={(event) => handleChange(event, index)}
-          />
-          {inputs.length > 1 && (
-            <button onClick={() => handleDeleteInput(index)}>Delete</button>
-          )}
-          {index === inputs.length - 1 && (
-            <button onClick={() => handleAddInput()}>Add</button>
-          )}
-        </div>
-      ))}
+//   return (
+//     <div className="container">
+//       {inputs.map((item, index) => (
+//           <div className="input_container" key={index}>
+//          <h3>Date: </h3> 
+//           <input
+//             name="service"
+//             type="Date"
+//             value={item.date}
+//             onChange={(event) => handleChange(event, index)}
+//               />
+//          <h3>Service: </h3> 
+//           <input
+//             name="Service: "
+//             type="text"
+//             value={item.service}
+//             onChange={(event) => handleChange(event, index)}
+//               />
+//          <h3>Price: </h3> 
+//           <input
+//             name="Price: "
+//             type='text'
+//             value={item.price}
+//             onChange={(event) => handleChange(event, index)}
+//           />
+//           {inputs.length > 1 && (
+//             <button onClick={() => handleDeleteInput(index)}>Delete</button>
+//           )}
+//           {index === inputs.length - 1 && (
+//             <button onClick={() => handleAddInput()}>Add</button>
+//           )}
+//         </div>
+//       ))}
 
-      <div className="body"> {JSON.stringify(inputs)} </div>
-    </div>
-  );
+//       <div className="body"> {JSON.stringify(inputs)} </div>
+//     </div>
+//   ); )
+    return (
+        <div className='entry'>
+            <form>
+                <label>Date: </label>
+                <input
+                    type="Date"
+                    required
+                />
+                <label>Service: </label>
+                <input
+                    type="text"
+                    required
+                />
+                <label>Price: </label>
+                <input
+                    type='number'
+                    required
+                />
+            </form>
+      </div>
+  )
+      
+
+        
 }
 
 // I've got the three input fields rendered on the UI and am able to type in them but not without errors showing up. 

@@ -2,82 +2,63 @@ import { useState } from "react";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
-    // const [date, setDate] = useState({Date})
-    const [entry, setEntry] = useState([{ service: "", price: "" }])
-    const [service, setService] = useState("")
-    const [price, setPrice] = useState([0])
-  
-  
-    const handleAddInput = () => {
-      setEntry([...entry, { service: '', price: ''}])  
-      setService(...service, [{ service: '' }])
-      setPrice(...price, [{price: ''}])
-    }
-  
-    const handleChange = (e, index) => {
-      let { service } = e.target
-      let onChangeValue = [service]
-      onChangeValue[index][service] = service
-      setService(onChangeValue)
-      
-    }
-    
-   const handlePrice = (e, index) => {
-      let { price, value } = e.target
-      let onChangeValue = [...price]
-      onChangeValue[index][service] = value
-      setPrice(onChangeValue)
-  }
-  
-    const handleDeleteInput = (index) => {
-      const newArray = [...service]
-      newArray.splice(index, 1);
-      setService(newArray)
-  }
+  const [inputs, setInputs] = useState(['']);
 
-    return (
-        <div className="container">
-            {/* {service.map(( index) => ( */}
-            <div className="input_container"
-            // key={index}
-            >
-                    <h3>Date: </h3>
-                    <input
-                        name="Date"
-                        type="text"
-                        id={Date} //check on whether that's the right way to go about it
-                        onChange={(event) => handleChange(event )}
-                    />
-                <h3>Service: </h3>
-                    <input
-                        name="service"
-                        type="text"
-                        id={service}
-                        onChange={(event) => handleChange(event )}
-                    />
-                    <h3>Price: </h3>
-                    <input
-                        name="price"
-                        type="text"
-                        id={price}
-                        onChange={(event) => handleChange(event )}
-                    />
-                    {service.length > 1 && (
-                        <button onClick={() => handleDeleteInput()}>Delete</button>
-                    )}
-                    { service.length - 1 && (
-                        <button onClick={() => handleAddInput()}>Submit Service</button>
-                    )}
-                    { service.length - 1 && (
-                        <button onClick={() => handlePrice()}>Submit Price</button>
-                    )}
-                </div>
-            {/* )) */}
-            {/* } */}
+  const handleAddInput = () => {
+    setInputs([...inputs, { service: "", price: "" }]);
+  };
 
-            <div className="body"> {JSON.stringify(service)} </div>
+  const handleChange = (event, index) => {
+    let { service, price } = event.target;
+    let onChangeValue = [...inputs];
+    onChangeValue[index][service] = price;
+    setInputs(onChangeValue);
+  };
+
+  const handleDeleteInput = (index) => {
+    const newArray = [...inputs];
+    newArray.splice(index, 1);
+    setInputs(newArray);
+  };
+
+
+  return (
+    <div className="container">
+      {inputs.map((item, index) => (
+          <div className="input_container" key={index}>
+         <h3>Date: </h3> 
+          <input
+            name="service"
+            type="Date"
+            value={item.date}
+            onChange={(event) => handleChange(event, index)}
+              />
+         <h3>Service: </h3> 
+          <input
+            name="Service: "
+            type="text"
+            value={item.service}
+            onChange={(event) => handleChange(event, index)}
+              />
+         <h3>Price: </h3> 
+          <input
+            name="Price: "
+            type='text'
+            value={item.price}
+            onChange={(event) => handleChange(event, index)}
+          />
+          {inputs.length > 1 && (
+            <button onClick={() => handleDeleteInput(index)}>Delete</button>
+          )}
+          {index === inputs.length - 1 && (
+            <button onClick={() => handleAddInput()}>Add</button>
+          )}
         </div>
-    )
+      ))}
+
+      <div className="body"> {JSON.stringify(inputs)} </div>
+    </div>
+  );
 }
 
 // I've got the three input fields rendered on the UI and am able to type in them but not without errors showing up. 
@@ -86,15 +67,4 @@ function ServiceField() {
 
 export default ServiceField
 
-                    {/* <select
-                        id="service"
-                        value={service}
-                        onChange={(event) => {
-                            setService(event.target.value)
-                        }}
-                    >
-                        <option />
-                        {SERVICES.map((service) => {
-                            <option key={service}>{service}</option>
-                        })}
-                    </select> */}
+// source code: https://dev.to/okafor__mary/how-to-dynamically-add-input-fields-on-button-click-in-reactjs-5298#:~:text=Create%20A%20React%20Component&text=First%2C%20we%20initialized%20the%20inputs,manage%20our%20input%20field%20values.

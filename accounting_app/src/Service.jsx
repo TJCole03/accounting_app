@@ -2,24 +2,27 @@ import { useState } from "react";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
-  const [inputs, setInputs] = useState(['']);
+    const [inputs, setInputs] = useState(['']);
+    const index = []
 
-  const handleAddInput = () => {
+  const handleAddInput = (index) => {
     setInputs([...inputs, { service: "", price: "" }]);
+      inputs.map(([index]))
+      console.log('clicked' [index], index)
   };
 
-  const handleChange = (event, index) => {
-    let { service, price } = event.target;
-    let onChangeValue = [...inputs];
-    onChangeValue[index][service] = price;
-    setInputs(onChangeValue);
-  };
+//   const handleChange = (event, index) => {
+//     let { service, price } = event.target;
+//     let onChangeValue = [...inputs];
+//     onChangeValue[index][service] = price;
+//     setInputs(onChangeValue);
+//   };
 
-  const handleDeleteInput = (index) => {
-    const newArray = [...inputs];
-    newArray.splice(index, 1);
-    setInputs(newArray);
-  };
+//   const handleDeleteInput = (index) => {
+//     const newArray = [...inputs];
+//     newArray.splice(index, 1);
+//     setInputs(newArray);
+//   };
 
 
 //   return (
@@ -61,24 +64,28 @@ function ServiceField() {
 //   ); )
     return (
         <div className='entry'>
-            <form>
-                <label>Date: </label>
-                <input
-                    type="Date"
+                <form>
+                    <label>Date: </label>
+                    <input
+                        type="Date"
                     required
-                />
-                <label>Service: </label>
-                <input
-                    type="text"
+                    // onChange={(event) => handleChange(event, index)}
+                    />
+                    <label>Service: </label>
+                    <input
+                        type="text"
                     required
-                />
-                <label>Price: </label>
-                <input
-                    type='number'
+                    // onChange={(event) => handleChange(event, index)}
+                    />
+                    <label>Price: </label>
+                    <input
+                        type='number'
                     required
-                />
-                <button>Submit</button>
-            </form>
+                    // onChange={(event) => handleChange(event, index)}
+                    />
+                <button onClick={() => handleAddInput(index)} >Submit</button>
+                
+                </form>   
       </div>
   )
       

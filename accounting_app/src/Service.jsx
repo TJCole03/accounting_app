@@ -3,17 +3,15 @@ import Submission from "./Submission";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
-    // const [inputs, setInputs] = useState('');
+    const [inputs, setInputs] = useState('');
     const index = []
-    console.log(index, [index])
 
-//   const handleAddInput = () => {
-//     setInputs([...inputs, { service: "", price: "" }]);
-//   };
+  const handleAddInput = () => {
+      setInputs([...inputs, { service: "", price: "" }]);
+      console.log(index, [index])
+
+  };
     
-//     const handleSubmission = (inputs) => {
-//       {Submission}
-//   }
 
 
     return (
@@ -23,19 +21,19 @@ function ServiceField() {
                     <input
                         type="Date"
                     required
-                    // onChange={(event) => handleChange(event, index)}
+                    onChange={(event) => handleAddInput(event, index)}
                     />
                     <label>Service: </label>
                     <input
                         type="text"
                     required
-                    // onChange={(event) => handleChange(event, index)}
+                    onChange={(event) => handleAddInput(event, index)}
                     />
                     <label>Price: </label>
                     <input
                         type='number'
                     required
-                    // onChange={(event) => handleChange(event, index)}
+                    onChange={(event) => handleAddInput(event, index)}
                 />
                 <Submission />
             </form> 

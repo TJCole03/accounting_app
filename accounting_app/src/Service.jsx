@@ -34,7 +34,7 @@ function ServiceField() {
                 />
             <button onClick={() =>
              
-             {if (!index) {
+             {if (index) {
                 console.log('on button click')
          } else {
              console.log('we got input')

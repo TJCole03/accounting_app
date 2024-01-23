@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 // import Submission from "./Submission";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
     const [inputs, setInputs] = useState('');
-    const index = []
+    const index = useCallback(index, [])
 
   const handleAddInput = () => {
       setInputs([...inputs, { service: "", price: "" }]);
@@ -43,7 +43,8 @@ function ServiceField() {
              }}
              
          
-            }  > Submit</button>  
+                }  > Submit</button> 
+            {/* cb={index}     */}
             </form> 
       </div>
   )

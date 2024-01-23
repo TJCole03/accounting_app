@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Submission from "./Submission";
+// import Submission from "./Submission";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
@@ -8,12 +8,9 @@ function ServiceField() {
 
   const handleAddInput = () => {
       setInputs([...inputs, { service: "", price: "" }]);
-      console.log(index, [index])
 
   };
     
-
-
     return (
         <div className='entry'>
                 <form>
@@ -35,7 +32,16 @@ function ServiceField() {
                     required
                     onChange={(event) => handleAddInput(event, index)}
                 />
-                <Submission />
+            <button onClick={() =>
+             
+             {if (!index) {
+                console.log('on button click')
+         } else {
+             console.log('we got input')
+             }}
+             
+         
+            }  > Submit</button>  
             </form> 
       </div>
   )

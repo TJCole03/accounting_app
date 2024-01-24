@@ -3,10 +3,12 @@ import { useCallback, useMemo, useState } from "react";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
-    const [inputs, setInputs] = useState('');
-    // const [service, setService] = useState('');
-    // const [price, setPrice] = useState('');
-    const index = []
+    const [inputs, setInputs] = useState([]);
+    const [service, setService] = useState('');
+    const [price, setPrice] = useState('');
+    const index = useMemo(() => {
+        console.log('is this even working???')
+    }, [])
 
     const handleSubmit = useCallback((inputs) => {
         index.push(inputs)
@@ -17,8 +19,8 @@ function ServiceField() {
 
     const handleAddInput = () => {
       setInputs([...inputs, { Date: "", service: "", price: ""}]);
-    //   setService([...service, { service: ""}]);
-    //   setPrice([...price, {  price: "" }]);
+      setService([...service, { service: ""}]);
+      setPrice([...price, {  price: "" }]);
 
   };
     
@@ -29,18 +31,21 @@ function ServiceField() {
                     <input
                         type="Date"
                     required
+                    id='date'
                     onChange={(event) => handleAddInput(event, index)}
                     />
                     <label>Service: </label>
                     <input
                         type="text"
                     required
+                    id='service'
                     onChange={(event) => handleAddInput(event, index)}
                     />
                     <label>Price: </label>
                     <input
                         type='number'
                     required
+                    id='price'
                     onChange={(event) => handleAddInput(event, index)}
                 />
             <button onClick={() =>
@@ -55,7 +60,8 @@ function ServiceField() {
              
          
                 }  > Submit</button> 
-            {/* cb={index}     */}
+                {/* cb={index}     */}
+                
             </form> 
       </div>
   )

@@ -1,13 +1,24 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 // import Submission from "./Submission";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 function ServiceField() {
     const [inputs, setInputs] = useState('');
-    const index = useCallback(index, [])
+    // const [service, setService] = useState('');
+    // const [price, setPrice] = useState('');
+    const index = []
 
-  const handleAddInput = () => {
-      setInputs([...inputs, { service: "", price: "" }]);
+    const handleSubmit = useCallback((inputs) => {
+        index.push(inputs)
+    }, [index])
+
+    console.log('INPUT YES', [index])
+    console.log('inputs', {inputs})
+
+    const handleAddInput = () => {
+      setInputs([...inputs, { Date: "", service: "", price: ""}]);
+    //   setService([...service, { service: ""}]);
+    //   setPrice([...price, {  price: "" }]);
 
   };
     
@@ -33,14 +44,14 @@ function ServiceField() {
                     onChange={(event) => handleAddInput(event, index)}
                 />
             <button onClick={() =>
-             
-                {
-                    if (inputs) {
-                    index.push(inputs)
-                console.log('INPUT YES', [index])
-         } else {
-             console.log('we got no input')
-             }}
+             handleSubmit(index)
+        //         {
+        //             if (inputs) {
+        //             inputs.push(index)
+        //         console.log('INPUT YES', [index])
+        //  } else {
+        //      console.log('we got no input')
+        //      }}
              
          
                 }  > Submit</button> 

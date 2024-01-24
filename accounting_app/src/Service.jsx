@@ -2,6 +2,12 @@ import { useCallback, useMemo, useState } from "react";
 // import Submission from "./Submission";
 // const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
+
+// note to self: I need the program to be able to detect my inputs in the input fields. I 
+// need to research more into React hooks and see how to prevent instant rerenders 
+// AND be able to store my information in the index array
+
+
 function ServiceField() {
     const [inputs, setInputs] = useState([]);
     const [service, setService] = useState('');

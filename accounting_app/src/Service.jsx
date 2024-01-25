@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import StoreEntries from "./StoreEntries";
+import StoreEntries from "./StoreEntries";
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
@@ -82,7 +82,7 @@ function ServiceField() {
             <button type="submit"> Submit</button>                 
             </form> 
         </div>
-        {/* <StoreEntries /> */}
+        <StoreEntries />
       </>
   )        
 }

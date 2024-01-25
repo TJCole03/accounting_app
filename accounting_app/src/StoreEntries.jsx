@@ -1,11 +1,13 @@
+import formJSON from './Service'
+import index from './Service'
 
-
-// function StoreEntries() {
-//     console.log('hi')
+function StoreEntries() {
+    console.log(formJSON)
+    console.log(index)
      
-//     return (
-//         <div></div>
-//      )
-// }
+    return (
+        <div>Hi</div>
+     )
+}
 
-// export default StoreEntries
+export default StoreEntries

@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 // import Submission from "./Submission";
-// const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
+const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
 // note to self: I need the program to be able to detect my inputs in the input fields. I 
@@ -13,10 +13,10 @@ function ServiceField() {
     const [service, setService] = useState('');
     const [price, setPrice] = useState('');
     const index = useMemo(() => {
-        console.log('is this even working???')
     }, [])
 
     const handleSubmit = useCallback((inputs) => {
+        console.log('is this even working???')
         index.push(inputs)
     }, [index])
 
@@ -32,40 +32,39 @@ function ServiceField() {
     
     return (
         <div className='entry'>
-                <form>
-                    <label>Date: </label>
-                    <input
-                        type="Date"
+            <form onClick={() =>
+             handleSubmit(index)}
+            >
+            <label>Date: 
+                <input
+                    type="Date"
                     required
                     id='date'
                     onChange={(event) => handleAddInput(event, index)}
                     />
-                    <label>Service: </label>
-                    <input
-                        type="text"
+            </label>
+            <label>Service: 
+                <select
+                    type="text"
                     required
                     id='service'
                     onChange={(event) => handleAddInput(event, index)}
-                    />
-                    <label>Price: </label>
-                    <input
-                        type='number'
+                    >
+                    <option />
+                        {SERVICES.map((service) => (
+                            <option key={service}>{service}</option>
+                    ))}    
+                </select>
+            </label>
+            <label>Price: 
+                <input
+                    type='number'
                     required
                     id='price'
                     onChange={(event) => handleAddInput(event, index)}
-                />
-            <button onClick={() =>
-             handleSubmit(index)
-        //         {
-        //             if (inputs) {
-        //             inputs.push(index)
-        //         console.log('INPUT YES', [index])
-        //  } else {
-        //      console.log('we got no input')
-        //      }}
-             
-         
-                }  > Submit</button> 
+                    />
+            </label>
+            <button> Submit</button> 
                 {/* cb={index}     */}
                 
             </form> 

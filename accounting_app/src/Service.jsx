@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-// import Submission from "./Submission";
+import { useState } from "react";
+// import StoreEntries from "./StoreEntries";
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
@@ -12,16 +12,11 @@ function ServiceField() {
     const [inputs, setInputs] = useState([]);
     const [service, setService] = useState('');
     const [price, setPrice] = useState('');
-    const index = useMemo(() => {
-    }, [])
+    // const index = useMemo(() => {
+    // }, [])
+    const index = []
 
-    // const handleSubmit = useCallback((inputs) => {
-    //     console.log('is this even working???')
-    //     index.push(inputs)
-    // }, [index])
 
-    // console.log('INPUT YES', [index])
-    // console.log('inputs', { inputs })
     
     const handleSubmit = (e) => {
     // prevents browser from reloading data
@@ -35,7 +30,10 @@ function ServiceField() {
         
     // OR you can work with it as a plain object
         const formJSON = Object.fromEntries(formData.entries())
+        index.push(formJSON)
         console.log(formJSON)
+        console.log(index)
+        // console.log('formJson', [formJSON])
 
     }
 
@@ -49,6 +47,7 @@ function ServiceField() {
   };
     
     return (
+      <>
         <div className='entry'>
             <form method="post" onSubmit={handleSubmit}>
             <label>Date: 
@@ -82,11 +81,10 @@ function ServiceField() {
             </label>
             <button type="submit"> Submit</button>                 
             </form> 
-      </div>
-  )
-      
-
-        
+        </div>
+        {/* <StoreEntries /> */}
+      </>
+  )        
 }
 
 // I've got the three input fields rendered on the UI and am able to type in them but not without errors showing up. 

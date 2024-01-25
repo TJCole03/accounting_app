@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 // import Submission from "./Submission";
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
@@ -15,13 +15,31 @@ function ServiceField() {
     const index = useMemo(() => {
     }, [])
 
-    const handleSubmit = useCallback((inputs) => {
-        console.log('is this even working???')
-        index.push(inputs)
-    }, [index])
+    // const handleSubmit = useCallback((inputs) => {
+    //     console.log('is this even working???')
+    //     index.push(inputs)
+    // }, [index])
 
-    console.log('INPUT YES', [index])
-    console.log('inputs', {inputs})
+    // console.log('INPUT YES', [index])
+    // console.log('inputs', { inputs })
+    
+    const handleSubmit = (e) => {
+    // prevents browser from reloading data
+        e.preventDefault();
+    // read form data
+        const form = e.target; 
+        const formData = new FormData(form)
+
+    // you can pass formData as fetch body directly: 
+        // fetch('/', { method: form.method, body: formData })
+        
+    // OR you can work with it as a plain object
+        const formJSON = Object.fromEntries(formData.entries())
+        console.log(formJSON)
+
+    }
+
+
 
     const handleAddInput = () => {
       setInputs([...inputs, { Date: "", service: "", price: ""}]);
@@ -32,14 +50,12 @@ function ServiceField() {
     
     return (
         <div className='entry'>
-            <form onClick={() =>
-             handleSubmit(index)}
-            >
+            <form method="post" onSubmit={handleSubmit}>
             <label>Date: 
                 <input
                     type="Date"
                     required
-                    id='date'
+                    name='date'
                     onChange={(event) => handleAddInput(event, index)}
                     />
             </label>
@@ -47,7 +63,7 @@ function ServiceField() {
                 <select
                     type="text"
                     required
-                    id='service'
+                    name='service'
                     onChange={(event) => handleAddInput(event, index)}
                     >
                     <option />
@@ -60,13 +76,11 @@ function ServiceField() {
                 <input
                     type='number'
                     required
-                    id='price'
+                    name='price'
                     onChange={(event) => handleAddInput(event, index)}
                     />
             </label>
-            <button> Submit</button> 
-                {/* cb={index}     */}
-                
+            <button type="submit"> Submit</button>                 
             </form> 
       </div>
   )

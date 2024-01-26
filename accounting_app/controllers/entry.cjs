@@ -1,9 +1,20 @@
-const Entry = require('../models/entryModel.js')
+const Entry = require('../models/entryModel')
 
 // module.exports = {
 //     index, 
 //     show
 // }
+
+exports.newEntry = async (req, res) => {
+    try {
+        const newEntry = new Entry(req.body)
+        await newEntry.save()
+        res.send(newEntry)
+        //res.send({entry: newEntry})
+    } catch (e) {
+        res.status(400).json({ message: e.message })
+    }
+}
 
 exports.index = async (req, res) => {
     try {

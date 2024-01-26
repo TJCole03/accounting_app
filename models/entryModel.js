@@ -8,7 +8,8 @@ const entrySchema = new Schema(
         price: {type: Number, required: true, default: 0 }
     },
     {timestamps: true}
-
 )
 
-module.exports = entrySchema
+const Entry = mongoose.model('Entry', entrySchema)
+
+module.exports = Entry

@@ -81,7 +81,8 @@ function ServiceField() {
             </label>
             <button type="submit"> Submit</button>                 
             </form> 
-        </div>
+            </div>
+         <br></br>   
         <StoreEntries />
       </>
   )        

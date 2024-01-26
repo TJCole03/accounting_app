@@ -27,3 +27,15 @@ income for next year's tax season.
     3. Taking daily net profits and automatically storing them in memory of the app and in the database at midnight or on user's command
 5. Database:
     1. MongoDB 
+
+            <tr>
+                <label>
+                    <td>Date</td>
+                </label>
+                <label>
+                    <td>with two columns</td>
+                </label>
+                <label>
+                    <td>with two columns</td>
+                </label>
+            </tr>

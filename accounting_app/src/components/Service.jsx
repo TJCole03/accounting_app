@@ -7,11 +7,12 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 // need to research more into React hooks and see how to prevent instant rerenders 
 // AND be able to store my information in the index array
 
+// https://www.geeksforgeeks.org/how-to-pass-data-into-table-from-a-form-using-react-components/
 
-function ServiceField() {
+function ServiceField(props) {
     const [inputs, setInputs] = useState([]);
     const [service, setService] = useState('');
-    const [price, setPrice] = useState()
+    const [price, setPrice] = useState('')
     // const index = useMemo(() => {
     // }, [])
     const index = [...inputs]
@@ -34,10 +35,25 @@ function ServiceField() {
         console.log(formJSON)
         console.log(index)
         // console.log('formJson', [formJSON])
+     
 
     }
 
-
+    const transferValue = (e) => {
+        e.preventDefault();
+        const val = {
+            Date,
+            service,
+            price,
+        };
+        props.handleSubmit(val);
+        clearState();
+    };
+ 
+    const clearState = () => {
+        setService('');
+        setPrice('');
+    };
 
     const handleAddInput = (e) => {
     //   setInputs([...inputs, { Date: "", service: "", price: ""}]);
@@ -55,7 +71,7 @@ function ServiceField() {
             <form method="post" onSubmit={handleSubmit}>
             <label>Date: 
                 <input
-                    value={inputs.Date}            
+                    value={Date}            
                     type="Date"
                     required
                     name='date'
@@ -64,7 +80,7 @@ function ServiceField() {
             </label>
             <label>Service: 
                     <select
-                    value={inputs.service}
+                    value={service}
                     type="text"
                     required
                     name='service'
@@ -78,14 +94,14 @@ function ServiceField() {
             </label>
             <label>Price: 
                 <input
-                    value={inputs.price}
+                    value={price}
                     type='number'
                     required
                     name='price'
                     onChange={(e) => handleAddInput(e, index)}
                     />
             </label>
-            <button type="submit"> Submit</button> 
+            <button type="submit" onClick={transferValue}> Submit</button> 
             <StoreEntries />
                     <p> we got: [index], {index}</p>
             </form> 

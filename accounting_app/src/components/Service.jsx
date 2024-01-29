@@ -11,10 +11,10 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 function ServiceField() {
     const [inputs, setInputs] = useState([]);
     const [service, setService] = useState('');
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState()
     // const index = useMemo(() => {
     // }, [])
-    const index = []
+    const index = [...inputs]
 
 
     
@@ -39,10 +39,13 @@ function ServiceField() {
 
 
 
-    const handleAddInput = () => {
-      setInputs([...inputs, { Date: "", service: "", price: ""}]);
-      setService([...service, { service: ""}]);
-      setPrice([...price, {  price: "" }]);
+    const handleAddInput = (e) => {
+    //   setInputs([...inputs, { Date: "", service: "", price: ""}]);
+    //   setService([...service, { service: ""}]);
+    //   setPrice([...price, {  price: "" }]);
+        setInputs(e.target.value)
+        setService(e.target.value)
+        setPrice(e.target.value)
 
   };
     
@@ -52,18 +55,20 @@ function ServiceField() {
             <form method="post" onSubmit={handleSubmit}>
             <label>Date: 
                 <input
+                    value={inputs.Date}            
                     type="Date"
                     required
                     name='date'
-                    onChange={(event) => handleAddInput(event, index)}
+                    onChange={(e) => handleAddInput(e, index)}
                     />
             </label>
             <label>Service: 
-                <select
+                    <select
+                    value={inputs.service}
                     type="text"
                     required
                     name='service'
-                    onChange={(event) => handleAddInput(event, index)}
+                    onChange={(e) => handleAddInput(e, index)}
                     >
                     <option />
                         {SERVICES.map((service) => (
@@ -73,17 +78,20 @@ function ServiceField() {
             </label>
             <label>Price: 
                 <input
+                    value={inputs.price}
                     type='number'
                     required
                     name='price'
-                    onChange={(event) => handleAddInput(event, index)}
+                    onChange={(e) => handleAddInput(e, index)}
                     />
             </label>
-            <button type="submit"> Submit</button>                 
+            <button type="submit"> Submit</button> 
+            <StoreEntries />
+                    <p> we got: [index], {index}</p>
             </form> 
             </div>
          <br></br>   
-        <StoreEntries />
+        
       </>
   )        
 }

@@ -3,13 +3,13 @@
 
 function StoreEntries() {
 
+    // const arr = [[{Date}],[{service}],[{price}]]
+
      
     return (
     <table>
         <thead>
-        <caption>
-                My amazing wifes income 
-        </caption>
+
             <tr>
                 <th scope='col'>Date</th>
                 <th scope='col'>Service</th>
@@ -28,3 +28,7 @@ function StoreEntries() {
 }
 
 export default StoreEntries
+
+{/* <caption>
+My amazing wifes income 
+</caption> */}

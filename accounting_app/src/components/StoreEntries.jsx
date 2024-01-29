@@ -2,12 +2,11 @@
 // import index from './Service'
 
 function StoreEntries() {
-    // console.log(formJSON)
-    // console.log(index)
+
      
     return (
     <table>
-        
+        <thead>
         <caption>
                 My amazing wifes income 
         </caption>
@@ -18,11 +17,12 @@ function StoreEntries() {
                 {/* <th scope='col'>Spending</th> */}
             </tr>
             <tr>
-                <th scope="row"> [insert date here] </th>
-                <td>[insert service]</td>
-                <td>[insert earnings]</td>
+                <th scope="row">[insert date here] </th>
+                <td scope="row">[insert service]</td>
+                <td scope="row">[insert earnings]</td>
                 {/* <td>[insert insert expenditures]</td> */}
-            </tr>
+                </tr>
+        </thead>
     </table>
      )
 }

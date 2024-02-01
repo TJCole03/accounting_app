@@ -1,5 +1,6 @@
 import { useState } from "react";
 import StoreEntries from "./StoreEntries";
+// import { Button } from 'semantic-ui-react'
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
@@ -11,6 +12,7 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 
 function ServiceField(props) {
     const [inputs, setInputs] = useState([]);
+    // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
     const [service, setService] = useState('');
     const [price, setPrice] = useState('')
     // const index = useMemo(() => {
@@ -71,7 +73,7 @@ function ServiceField(props) {
             <form method="post" onSubmit={handleSubmit}>
             <label>Date: 
                 <input
-                    value={Date}            
+                    // value={Date}            
                     type="Date"
                     required
                     name='date'
@@ -80,7 +82,7 @@ function ServiceField(props) {
             </label>
             <label>Service: 
                     <select
-                    value={service}
+                    // value={service}
                     type="text"
                     required
                     name='service'
@@ -94,19 +96,19 @@ function ServiceField(props) {
             </label>
             <label>Price: 
                 <input
-                    value={price}
+                    // value={price}
                     type='number'
                     required
                     name='price'
                     onChange={(e) => handleAddInput(e, index)}
                     />
             </label>
-            <button type="submit" onClick={transferValue}> Submit</button> 
+                    <button type="submit" onClick={transferValue}> Submit</button> 
+                    {/* <Button primary type="submit" onClick={() => transferValue()}>Submit</Button> */}
             <StoreEntries />
-                    <p> we got: [index], {index}</p>
+                    <p> we got: {index}</p>
             </form> 
             </div>
-         <br></br>   
         
       </>
   )        

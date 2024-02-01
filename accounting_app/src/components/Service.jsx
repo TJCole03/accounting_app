@@ -1,6 +1,7 @@
 import { useState } from "react";
 import StoreEntries from "./StoreEntries";
-import { Button } from 'semantic-ui-react'
+// import { Button } from 'semantic-ui-react'
+// import { findDOMNode } from 'react-dom'
 // import PropTypes from 'semantic-ui-react'
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
@@ -11,7 +12,7 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 
 // https://www.geeksforgeeks.org/how-to-pass-data-into-table-from-a-form-using-react-components/
 
-function ServiceField(props) {
+function ServiceField() {
     const [inputs, setInputs] = useState([]);
     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
     const [service, setService] = useState('');
@@ -42,14 +43,14 @@ function ServiceField(props) {
 
     }
 
-    const transferValue = (e) => {
-        e.preventDefault(props);
+    const transferValue = () => {
+        // e.preventDefault();
         const val = {
             Date,
             service,
             price,
         };
-        props.handleSubmit(val);
+        handleSubmit(val);
         clearState();
     };
  
@@ -70,8 +71,8 @@ function ServiceField(props) {
     
     return (
       <>
-        <form className='entry'>
-            <div method="post" onSubmit={handleSubmit}>
+        <div className='entry'>
+            <form method="post" onSubmit={handleSubmit}>
             <label>Date: 
                 <input
                     // value={Date}            
@@ -104,12 +105,12 @@ function ServiceField(props) {
                     onChange={(e) => handleAddInput(e, index)}
                     />
             </label>
-                    {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
-                    <Button primary type="submit" onClick={() => transferValue()}>Submit</Button>
+                    <button type="submit" onClick={transferValue}> Submit</button> 
+                    {/* <Button primary type="submit" onClick={() => transferValue()}>Submit</Button> */}
             <StoreEntries />
                     <p> we got: {index}</p>
-            </div> 
-            </form>
+            </form> 
+            </div>
         
       </>
   )        

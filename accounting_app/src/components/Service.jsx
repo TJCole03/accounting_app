@@ -1,6 +1,7 @@
 import { useState } from "react";
 import StoreEntries from "./StoreEntries";
-// import { Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
+// import PropTypes from 'semantic-ui-react'
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
@@ -42,7 +43,7 @@ function ServiceField(props) {
     }
 
     const transferValue = (e) => {
-        e.preventDefault();
+        e.preventDefault(props);
         const val = {
             Date,
             service,
@@ -69,8 +70,8 @@ function ServiceField(props) {
     
     return (
       <>
-        <div className='entry'>
-            <form method="post" onSubmit={handleSubmit}>
+        <form className='entry'>
+            <div method="post" onSubmit={handleSubmit}>
             <label>Date: 
                 <input
                     // value={Date}            
@@ -103,12 +104,12 @@ function ServiceField(props) {
                     onChange={(e) => handleAddInput(e, index)}
                     />
             </label>
-                    <button type="submit" onClick={transferValue}> Submit</button> 
-                    {/* <Button primary type="submit" onClick={() => transferValue()}>Submit</Button> */}
+                    {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
+                    <Button primary type="submit" onClick={() => transferValue()}>Submit</Button>
             <StoreEntries />
                     <p> we got: {index}</p>
-            </form> 
-            </div>
+            </div> 
+            </form>
         
       </>
   )        

@@ -1,6 +1,7 @@
+import React from 'react'
 import { useState } from "react";
 import StoreEntries from "./StoreEntries";
-// import { Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 // import { findDOMNode } from 'react-dom'
 // import PropTypes from 'semantic-ui-react'
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
@@ -13,15 +14,22 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 // https://www.geeksforgeeks.org/how-to-pass-data-into-table-from-a-form-using-react-components/
 
 function ServiceField() {
-    const [inputs, setInputs] = useState([]);
+    const [inputs, setInputs] = useState('');
     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
     const [service, setService] = useState('');
     const [price, setPrice] = useState('')
     // const index = useMemo(() => {
     // }, [])
-    const index = [...inputs]
+    const index = [inputs]
 
-
+    // class AutoselectingInput extends ServiceField {
+    //     inputRef = createRef(null);
+      
+    //     componentDidMount() {
+    //         const input = this.inputRef.current;
+    //         input.select()
+    //     }
+    // }
     
     const handleSubmit = (e) => {
     // prevents browser from reloading data
@@ -37,22 +45,27 @@ function ServiceField() {
         const formJSON = Object.fromEntries(formData.entries())
         index.push(formJSON)
         console.log(formJSON)
-        console.log(index)
+        // console.log(index)
         // console.log('formJson', [formJSON])
      
 
     }
 
-    const transferValue = () => {
-        // e.preventDefault();
-        const val = {
-            Date,
-            service,
-            price,
-        };
-        handleSubmit(val);
-        clearState();
-    };
+    const transferValue = (e) => {
+        setInputs([index], "This is data from Parent Component to the Child Component.");
+        clearState()
+    }
+
+    // const transferValue = () => {
+    //     // e.preventDefault();
+    //     const val = {
+    //         Date,
+    //         service,
+    //         price,
+    //     };
+    //     handleSubmit(val);
+    //     clearState();
+    // };
  
     const clearState = () => {
         setService('');
@@ -74,7 +87,7 @@ function ServiceField() {
         <div className='entry'>
             <form method="post" onSubmit={handleSubmit}>
             <label>Date: 
-                <input
+                <input 
                     // value={Date}            
                     type="Date"
                     required
@@ -105,10 +118,14 @@ function ServiceField() {
                     onChange={(e) => handleAddInput(e, index)}
                     />
             </label>
-                    <button type="submit" onClick={transferValue}> Submit</button> 
-                    {/* <Button primary type="submit" onClick={() => transferValue()}>Submit</Button> */}
-            <StoreEntries />
-                    <p> we got: {index}</p>
+                    {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
+                    <Button primary type="submit" onClick={() => transferValue()}>Submit</Button>
+                    <StoreEntries
+                    
+                        
+                        
+                    />
+                    <p> we got: {[index]}</p>
             </form> 
             </div>
         

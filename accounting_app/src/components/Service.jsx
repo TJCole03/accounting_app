@@ -51,8 +51,9 @@ function ServiceField() {
 
     }
 
-    const transferValue = (e) => {
-        setInputs([index], "This is data from Parent Component to the Child Component.");
+    const transferValue = (inputs) => {
+        // setInputs("This is data from Parent Component to the Child Component.");
+        setInputs(inputs);
         clearState()
     }
 
@@ -120,12 +121,15 @@ function ServiceField() {
             </label>
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
                     <Button primary type="submit" onClick={() => transferValue()}>Submit</Button>
-                    <StoreEntries
-                    
-                        
-                        
-                    />
-                    <p> we got: {[index]}</p>
+                    <p> we got:
+                        <StoreEntries
+                            // transferValue={[
+                            //     { Date },
+                            //     { service },
+                        //     { price }]} 
+                        />
+                                {[index]}
+                    </p>
             </form> 
             </div>
         

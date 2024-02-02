@@ -1,14 +1,17 @@
-// import React from "react"
+import React from "react"
+import {Button} from 'semantic-ui-react'
 // import formJSON from './Service'
-// import index from './Service'
+// import {transferValue} from './Service'
 
-function StoreEntries() {
+function StoreEntries({transferValue}) {
 
-    // const arr = [[{Date}],[{service}],[{price}]]
+    const inputs = 'here are our inputs'
 
      
     return (
+    <> 
     <table>
+         
         <thead>
 
             <tr>
@@ -18,13 +21,17 @@ function StoreEntries() {
                 {/* <th scope='col'>Spending</th> */}
             </tr>
             <tr>
-                <th scope="row">[insert date here] </th>
-                <td scope="row">[insert service]</td>
-                <td scope="row">[insert earnings]</td>
+                <th scope="row">[insert date here], {transferValue} </th>
+                <td scope="row">[insert service], {transferValue}</td>
+                <td scope="row">[insert earnings]{transferValue}</td>
                 {/* <td>[insert insert expenditures]</td> */}
-                </tr>
+            </tr>
         </thead>
     </table>
+        <div>
+             <Button primary onClick={() => transferValue(inputs)}>Click Child</Button>   
+        </div>
+    </>  
      )
 }
 

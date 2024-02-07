@@ -21,7 +21,11 @@ function ServiceField() {
     const [price, setPrice] = useState(0)
     // const index = useMemo(() => {
     // }, [])
-    const index = [inputs]
+    const dateIndex = [date]
+    const serviceIndex = [service]
+    const priceIndex = [price]
+
+
 
     // class AutoselectingInput extends ServiceField {
     //     inputRef = createRef(null);
@@ -44,7 +48,9 @@ function ServiceField() {
         
     // OR you can work with it as a plain object
         const formJSON = Object.fromEntries(formData.entries())
-        index.push(formJSON)
+        dateIndex.push(formJSON)
+        priceIndex.push(formJSON)
+        serviceIndex.push(formJSON)
         console.log(formJSON)
         transferValue()
         // console.log(index)
@@ -53,9 +59,9 @@ function ServiceField() {
 
     }
 
-    const transferValue = (inputs) => {
+    const transferValue = (date, service, price) => {
         // setInputs("This is data from Parent Component to the Child Component.");
-        setInputs(inputs);
+        setInputs(date, service, price);
         clearState()
     }
 
@@ -71,8 +77,9 @@ function ServiceField() {
     // };
  
     const clearState = () => {
+        setDate('')
         setService('');
-        setPrice('');
+        setPrice(0);
     };
 
     const handleAddInput = (e) => {
@@ -80,6 +87,7 @@ function ServiceField() {
     //   setService([...service, { service: ""}]);
     //   setPrice([...price, {  price: "" }]);
         setInputs(e.target.value)
+        setDate(e.target.value)
         setService(e.target.value)
         setPrice(e.target.value)
 
@@ -95,7 +103,7 @@ function ServiceField() {
                     type="Date"
                     required
                     name='date'
-                    onChange={(e) => handleAddInput(e, index)}
+                    onChange={(e) => handleAddInput(e, dateIndex)}
                     />
             </label>
             <label>Service: 
@@ -104,7 +112,7 @@ function ServiceField() {
                     type="text"
                     required
                     name='service'
-                    onChange={(e) => handleAddInput(e, index)}
+                    onChange={(e) => handleAddInput(e, serviceIndex)}
                     >
                     <option />
                         {SERVICES.map((service) => (
@@ -118,16 +126,16 @@ function ServiceField() {
                     type='number'
                     required
                     name='price'
-                    onChange={(e) => handleAddInput(e, index)}
+                    onChange={(e) => handleAddInput(e, priceIndex)}
                     />
             </label>
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
             <Button primary type="submit"  >Submit</Button>
             <p> we got:
                 <StoreEntries
-                    onClick={() => transferValue(inputs)}
+                    onClick={() => {transferValue(date, service, price)}}
                 />
-                {[index]}
+                {[[dateIndex], [serviceIndex], [priceIndex]]}
             </p>
             </form> 
             </div>

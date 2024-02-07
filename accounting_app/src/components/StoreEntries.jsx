@@ -5,7 +5,7 @@
 
 function StoreEntries({transferValue}) {
 
-    const inputs = 'input'
+    const inputs = 'here is the input'
 
      
     return (

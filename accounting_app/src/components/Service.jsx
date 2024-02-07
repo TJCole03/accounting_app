@@ -45,6 +45,7 @@ function ServiceField() {
         const formJSON = Object.fromEntries(formData.entries())
         index.push(formJSON)
         console.log(formJSON)
+        transferValue()
         // console.log(index)
         // console.log('formJson', [formJSON])
      
@@ -120,9 +121,11 @@ function ServiceField() {
                     />
             </label>
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
-            <Button primary type="submit" onClick={() => transferValue()}>Submit</Button>
+            <Button primary type="submit"  >Submit</Button>
             <p> we got:
-                <StoreEntries/>
+                <StoreEntries
+                    onClick={() => transferValue(inputs)}
+                />
                 {[index]}
             </p>
             </form> 

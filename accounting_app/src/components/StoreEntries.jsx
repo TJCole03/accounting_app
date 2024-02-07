@@ -1,7 +1,7 @@
 // import React from "react"
 // import {Button} from 'semantic-ui-react'
 // import formJSON from './Service'
-// import {transferValue} from './Service'
+
 
 function StoreEntries({transferValue}) {
 
@@ -26,6 +26,7 @@ function StoreEntries({transferValue}) {
             </tr>
         </thead>
     </table>
+        
         {/* <div>
              <Button primary onClick={() => transferValue(inputs)}>Click Child</Button>   
         </div> */}

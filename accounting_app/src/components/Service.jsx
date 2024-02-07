@@ -132,10 +132,10 @@ function ServiceField() {
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
             <Button primary type="submit"  >Submit</Button>
             <p> we got:
-                <StoreEntries
-                    onClick={() => {transferValue(date, service, price)}}
-                />
-                {[[dateIndex], [serviceIndex], [priceIndex]]}
+                <StoreEntries/>
+                    {/* onClick={() => {transferValue(date, service, price)}} */}
+                
+                {/* {[[dateIndex], [serviceIndex], [priceIndex]]} */}
             </p>
             </form> 
             </div>

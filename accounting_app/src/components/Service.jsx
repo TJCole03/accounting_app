@@ -16,8 +16,9 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 function ServiceField() {
     const [inputs, setInputs] = useState('');
     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
+    const [date, setDate] = useState('')
     const [service, setService] = useState('');
-    const [price, setPrice] = useState('')
+    const [price, setPrice] = useState(0)
     // const index = useMemo(() => {
     // }, [])
     const index = [inputs]

@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { useState } from "react";
 // import StoreEntries from "./StoreEntries";
 import { Button } from 'semantic-ui-react'
@@ -139,24 +139,24 @@ function ServiceField() {
                 {/* {[[dateIndex], [serviceIndex], [priceIndex]]} */}
             </form> 
             </div>
-            <div className='table'>
+        <div className='table' action={transferValue}>
             <table>
-        <thead>
-            <tr>
-                <th scope='col'>Date</th>
-                <th scope='col'>Service</th>
-                <th scope='col'>Gross Earnings</th>
+                <thead>
+                <tr>
+                    <th scope='col'>Date</th>
+                    <th scope='col'>Service</th>
+                    <th scope='col'>Gross Earnings</th>
                 {/* <th scope='col'>Spending</th> */}
-            </tr>
-            <tr>
-                <th scope="row">{[dateIndex]}, {transferValue} </th>  
-                <td scope="row">{[serviceIndex]}, {transferValue}</td>
-                <td scope="row">{[priceIndex]}{transferValue}</td>
+                </tr>
+                <tr>
+                    <th scope="row">{[dateIndex]}, {transferValue} </th>  
+                    <td scope="row">{[serviceIndex]}, {transferValue}</td>
+                    <td scope="row">{[priceIndex]}{transferValue}</td>
                 {/* <td>[insert insert expenditures]</td> */}
-            </tr>
-        </thead>
-        </table>
-            </div>
+                </tr>
+                </thead>
+            </table>
+        </div>
         
       </>
   )        

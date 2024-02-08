@@ -14,10 +14,10 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 // https://www.geeksforgeeks.org/how-to-pass-data-into-table-from-a-form-using-react-components/
 
 function ServiceField() {
-    const [inputs, setInputs] = useState('');
+    const [inputs, setInputs] = useState();
     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
-    const [date, setDate] = useState('')
-    const [service, setService] = useState('');
+    const [date, setDate] = useState('date')
+    const [service, setService] = useState('reiki');
     const [price, setPrice] = useState(0)
     // const index = useMemo(() => {
     // }, [])
@@ -83,16 +83,39 @@ function ServiceField() {
         setPrice(0);
     };
 
-    const handleAddInput = (e) => {
-    //   setInputs([...inputs, { Date: "", service: "", price: ""}]);
-    //   setService([...service, { service: ""}]);
-    //   setPrice([...price, {  price: "" }]);
-        setInputs(e.target.value)
-        setDate(e.target.value)
-        setService(e.target.value)
-        setPrice(e.target.value)
+//     const handleAddInput = (e) => {
+//     //   setInputs([...inputs, { Date: "", service: "", price: ""}]);
+//     //   setService([...service, { service: ""}]);
+//     //   setPrice([...price, {  price: "" }]);
+//         // setInputs(e.target.value)
+//         setDate({ 
+//             ...date,
+//             date: e.target.value})
+//         setService(e.target.value)
+//         setPrice(e.target.value)
 
-  };
+//   };
+    
+    // const handleDate = (e) => {
+    //     setDate({
+    //         ...[date], 
+    //         date: e.target.value
+    //     })
+    // }
+
+    // const handleService = (e) => {
+    //     setService({
+    //         ...[service], 
+    //         service: e.target.value
+    //     })
+    // }
+
+    // const handlePrice = (e) => {
+    //     ({
+    //         ...[price], 
+    //         price: e.target.value
+    //     })
+    // }
     
     return (
       <>
@@ -104,7 +127,8 @@ function ServiceField() {
                     type="Date"
                     required
                     name='date'
-                    onChange={(e) => handleAddInput(e, dateIndex)}
+                    onChange={(e) => handleDate(e, dateIndex)}
+                    action={transferValue}
                     />
             </label>
             <label>Service: 
@@ -113,7 +137,8 @@ function ServiceField() {
                     type="text"
                     required
                     name='service'
-                    onChange={(e) => handleAddInput(e, serviceIndex)}
+                    onChange={(e) => handleService(e, serviceIndex)}
+                    action={transferValue}
                     >
                     <option />
                         {SERVICES.map((service) => (
@@ -127,7 +152,8 @@ function ServiceField() {
                     type='number'
                     required
                     name='price'
-                    onChange={(e) => handleAddInput(e, priceIndex)}
+                    onChange={(e) => handlePrice(e, priceIndex)}
+                    action={transferValue}
                     />
             </label>
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
@@ -139,7 +165,7 @@ function ServiceField() {
                 {/* {[[dateIndex], [serviceIndex], [priceIndex]]} */}
             </form> 
             </div>
-        <div className='table' action={transferValue}>
+        <div className='table' >
             <table>
                 <thead>
                 <tr>
@@ -149,9 +175,9 @@ function ServiceField() {
                 {/* <th scope='col'>Spending</th> */}
                 </tr>
                 <tr>
-                    <th scope="row">{[dateIndex]}, {transferValue} </th>  
-                    <td scope="row">{[serviceIndex]}, {transferValue}</td>
-                    <td scope="row">{[priceIndex]}{transferValue}</td>
+                    <th scope="row">{[dateIndex]},  </th>  
+                    <td scope="row">{[serviceIndex]}, </td>
+                    <td scope="row">{[priceIndex]}</td>
                 {/* <td>[insert insert expenditures]</td> */}
                 </tr>
                 </thead>

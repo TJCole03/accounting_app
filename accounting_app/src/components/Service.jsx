@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import StoreEntries from "./StoreEntries";
+// import StoreEntries from "./StoreEntries";
 import { Button } from 'semantic-ui-react'
 // import { findDOMNode } from 'react-dom'
 // import PropTypes from 'semantic-ui-react'
@@ -24,6 +24,7 @@ function ServiceField() {
     const dateIndex = [date]
     const serviceIndex = [service]
     const priceIndex = [price]
+    const index = [inputs]
 
 
 
@@ -59,9 +60,9 @@ function ServiceField() {
 
     }
 
-    const transferValue = (date, service, price) => {
+    const transferValue = (formJSON) => {
         // setInputs("This is data from Parent Component to the Child Component.");
-        setInputs(date, service, price);
+        setInputs(formJSON);
         clearState()
     }
 
@@ -131,13 +132,30 @@ function ServiceField() {
             </label>
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
             <Button primary type="submit"  >Submit</Button>
-            <p> we got:
-                <StoreEntries/>
-                    {/* onClick={() => {transferValue(date, service, price)}} */}
-                
+                    <p> we got: {index}</p>
+                        
+
+                {/* onClick={() => {transferValue(date, service, price)}} */}
                 {/* {[[dateIndex], [serviceIndex], [priceIndex]]} */}
-            </p>
             </form> 
+            </div>
+            <div className='table'>
+            <table>
+        <thead>
+            <tr>
+                <th scope='col'>Date</th>
+                <th scope='col'>Service</th>
+                <th scope='col'>Gross Earnings</th>
+                {/* <th scope='col'>Spending</th> */}
+            </tr>
+            <tr>
+                <th scope="row">{[dateIndex]}, {transferValue} </th>  
+                <td scope="row">{[serviceIndex]}, {transferValue}</td>
+                <td scope="row">{[priceIndex]}{transferValue}</td>
+                {/* <td>[insert insert expenditures]</td> */}
+            </tr>
+        </thead>
+        </table>
             </div>
         
       </>

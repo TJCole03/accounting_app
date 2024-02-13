@@ -14,7 +14,7 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 // https://www.geeksforgeeks.org/how-to-pass-data-into-table-from-a-form-using-react-components/
 
 function ServiceField() {
-    const [inputs, setInputs] = useState();
+    // const [inputs, setInputs] = useState([]);
     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
     const [date, setDate] = useState('date')
     const [service, setService] = useState('reiki');
@@ -24,7 +24,7 @@ function ServiceField() {
     const dateIndex = [date]
     const serviceIndex = [service]
     const priceIndex = [price]
-    const index = [inputs]
+    // const index = [inputs]
 
 
 
@@ -62,7 +62,9 @@ function ServiceField() {
 
     const transferValue = (formJSON) => {
         // setInputs("This is data from Parent Component to the Child Component.");
-        setInputs(formJSON);
+        setDate(formJSON);
+        setService(formJSON);
+        setPrice(formJSON);
         clearState()
     }
 
@@ -96,26 +98,26 @@ function ServiceField() {
 
 //   };
     
-    // const handleDate = (e) => {
-    //     setDate({
-    //         ...[date], 
-    //         date: e.target.value
-    //     })
-    // }
+    const handleDate = (e) => {
+        setDate({
+            ...[date], 
+            date: e.target.value
+        })
+    }
 
-    // const handleService = (e) => {
-    //     setService({
-    //         ...[service], 
-    //         service: e.target.value
-    //     })
-    // }
+    const handleService = (e) => {
+        setService({
+            ...[service], 
+            service: e.target.value
+        })
+    }
 
-    // const handlePrice = (e) => {
-    //     ({
-    //         ...[price], 
-    //         price: e.target.value
-    //     })
-    // }
+    const handlePrice = (e) => {
+        ({
+            ...[price], 
+            price: e.target.value
+        })
+    }
     
     return (
         <>
@@ -158,7 +160,7 @@ function ServiceField() {
             </label>
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
             <Button primary type="submit"  >Submit</Button>
-                    <p> we got: {index}</p>
+                    <p> we got: [serviceIndex]</p>
                         
 
                 {/* onClick={() => {transferValue(date, service, price)}} */}
@@ -175,9 +177,9 @@ function ServiceField() {
                 {/* <th scope='col'>Spending</th> */}
                 </tr>
                 <tr>
-                    <th scope="row">{[dateIndex]},  </th>  
-                    <td scope="row">{[serviceIndex]}, </td>
-                    <td scope="row">{[priceIndex]}</td>
+                    <th scope="row">[dateIndex],  </th>  
+                    <td scope="row">[serviceIndex], </td>
+                    <td scope="row">[priceIndex]</td>
                 {/* <td>[insert insert expenditures]</td> */}
                 </tr>
                 </thead>

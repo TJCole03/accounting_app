@@ -52,7 +52,11 @@ function ServiceField() {
         dateIndex.push(formJSON)
         priceIndex.push(formJSON)
         serviceIndex.push(formJSON)
-        console.log(formJSON)
+        console.log(formJSON, 'formJSON')
+        console.log({Date},dateIndex)
+        console.log({service},serviceIndex)
+        console.log({price},priceIndex)
+        console.log({price},priceIndex[1])
         transferValue()
         // console.log(index)
         // console.log('formJson', [formJSON])
@@ -177,9 +181,9 @@ function ServiceField() {
                 {/* <th scope='col'>Spending</th> */}
                 </tr>
                 <tr>
-                    <th scope="row">[dateIndex],  </th>  
-                    <td scope="row">[serviceIndex], </td>
-                    <td scope="row">[priceIndex]</td>
+                    <th scope="row">{dateIndex[1]}  </th>  
+                    <td scope="row">{serviceIndex[1]}, </td>
+                            <td scope="row">{priceIndex[1]}</td>
                 {/* <td>[insert insert expenditures]</td> */}
                 </tr>
                 </thead>

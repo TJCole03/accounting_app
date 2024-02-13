@@ -16,14 +16,17 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
 function ServiceField() {
     // const [inputs, setInputs] = useState([]);
     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
-    const [date, setDate] = useState('date')
-    const [service, setService] = useState('reiki');
+    const [date, setDate] = useState('')
+    const [service, setService] = useState('');
     const [price, setPrice] = useState(0)
     // const index = useMemo(() => {
     // }, [])
     const dateIndex = [date]
     const serviceIndex = [service]
     const priceIndex = [price]
+    let dateArr = []
+    let serviceArr = []
+    let priceArr = []
     // const index = [inputs]
 
 
@@ -66,6 +69,14 @@ function ServiceField() {
 
     const transferValue = (formJSON) => {
         // setInputs("This is data from Parent Component to the Child Component.");
+        if (dateIndex && serviceIndex && priceIndex) {
+            dateArr.push(dateIndex[1])
+            serviceArr.push(serviceIndex[1])
+            priceArr.push(priceIndex[1])
+            console.log(dateArr, serviceArr, priceArr)
+        } else {
+            console.log('still closer because you know this doesnt work')
+        }
         setDate(formJSON);
         setService(formJSON);
         setPrice(formJSON);
@@ -167,7 +178,7 @@ function ServiceField() {
                     <p> we got: [serviceIndex]</p>
                         
 
-                {/* onClick={() => {transferValue(date, service, price)}} */}
+                onClick={() => {transferValue(date, service, price)}}
                 {/* {[[dateIndex], [serviceIndex], [priceIndex]]} */}
             </form> 
             </div>
@@ -181,9 +192,9 @@ function ServiceField() {
                 {/* <th scope='col'>Spending</th> */}
                 </tr>
                 <tr>
-                    <th scope="row">{dateIndex[1]}  </th>  
-                    <td scope="row">{serviceIndex[1]}, </td>
-                            <td scope="row">{priceIndex[1]}</td>
+                    <th scope="row">{[dateArr]}  </th>  
+                    <td scope="row">{[serviceArr]}, </td>
+                    <td scope="row">{[priceArr]}</td>
                 {/* <td>[insert insert expenditures]</td> */}
                 </tr>
                 </thead>

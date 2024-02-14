@@ -30,16 +30,6 @@ function ServiceField() {
     // const index = [inputs]
 
 
-
-    // class AutoselectingInput extends ServiceField {
-    //     inputRef = createRef(null);
-      
-    //     componentDidMount() {
-    //         const input = this.inputRef.current;
-    //         input.select()
-    //     }
-    // }
-    
     const handleSubmit = (e) => {
     // prevents browser from reloading data
         e.preventDefault();
@@ -69,17 +59,17 @@ function ServiceField() {
 
     const transferValue = (formJSON) => {
         // setInputs("This is data from Parent Component to the Child Component.");
-        if (dateIndex && serviceIndex && priceIndex) {
-            dateArr.push(dateIndex[1])
-            serviceArr.push(serviceIndex[1])
-            priceArr.push(priceIndex[1])
-            console.log(dateArr, serviceArr, priceArr)
+        if (date && service && price) {
+            date.push(dateIndex[1])
+            service.push(serviceIndex[1])
+            price.push(priceIndex[1])
+            console.log([{Date, service, price}])
         } else {
             console.log('still closer because you know this doesnt work')
         }
-        setDate(formJSON);
-        setService(formJSON);
-        setPrice(formJSON);
+        setDate({formJSON});
+        setService({formJSON});
+        setPrice({formJSON});
         clearState()
     }
 
@@ -100,32 +90,23 @@ function ServiceField() {
         setPrice(0);
     };
 
-//     const handleAddInput = (e) => {
-//     //   setInputs([...inputs, { Date: "", service: "", price: ""}]);
-//     //   setService([...service, { service: ""}]);
-//     //   setPrice([...price, {  price: "" }]);
-//         // setInputs(e.target.value)
-//         setDate({ 
-//             ...date,
-//             date: e.target.value})
-//         setService(e.target.value)
-//         setPrice(e.target.value)
-
-//   };
     
     const handleDate = (e) => {
         setDate({
             ...[date], 
             date: e.target.value
         })
+        if (date) {
+            date.push(dateArr)
+        }
     }
 
-    const handleService = (e) => {
-        setService({
-            ...[service], 
-            service: e.target.value
-        })
-    }
+    // const handleService = (e) => {
+    //     setService({
+    //         ...[service], 
+    //         service: e.target.value
+    //     })
+    // }
 
     const handlePrice = (e) => {
         ({
@@ -154,7 +135,7 @@ function ServiceField() {
                     type="text"
                     required
                     name='service'
-                    onChange={(e) => handleService(e, serviceIndex)}
+                    // onChange={(e) => handleService(e, serviceIndex)}
                     action={transferValue}
                     >
                     <option />
@@ -192,9 +173,9 @@ function ServiceField() {
                 {/* <th scope='col'>Spending</th> */}
                 </tr>
                 <tr>
-                    <th scope="row">{[dateArr]}  </th>  
-                    <td scope="row">{[serviceArr]}, </td>
-                    <td scope="row">{[priceArr]}</td>
+                    <th scope="row">`${Date}`  </th>  
+                    <td scope="row">`${service}`, </td>
+                    <td scope="row">`${price}`</td>
                 {/* <td>[insert insert expenditures]</td> */}
                 </tr>
                 </thead>

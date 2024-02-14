@@ -1,41 +1,38 @@
-// // import React from "react"
-// // import {Button} from 'semantic-ui-react'
-// // import formJSON from './Service'
+// import React from "react"
+// import {Button} from 'semantic-ui-react'
+// import formJSON from './Service'
 
-
-// function StoreEntries({transferValue}) {
-
-//     const inputs = 'here is the input'
-
+async function StoreEntries() {
+    
+ //make into class component
      
-//     return (
-//     <> 
-//     <table>
-//         <thead>
-//             <tr>
-//                 <th scope='col'>Date</th>
-//                 <th scope='col'>Service</th>
-//                 <th scope='col'>Gross Earnings</th>
-//                 {/* <th scope='col'>Spending</th> */}
-//             </tr>
-//             <tr>
-//                 <th scope="row">{inputs}, {transferValue} </th>  
-//                 <td scope="row">{inputs}, {transferValue}</td>
-//                 <td scope="row">{inputs}{transferValue}</td>
-//                 {/* <td>[insert insert expenditures]</td> */}
-//             </tr>
-//         </thead>
-//     </table>
+    return (
+    <> 
+        <div className='table' >
+            <table>
+                <thead>
+                <tr>
+                    <th scope='col'>Date</th>
+                    <th scope='col'>Service</th>
+                    <th scope='col'>Gross Earnings</th>
+                {/* <th scope='col'>Spending</th> */}
+                </tr>
+                <tr>
+                    {/* <th scope="row">`${Date}`</th>  
+                    <td scope="row">`${service}`</td>
+                    <td scope="row">`${price}</td> */}
+                {/* <td>[insert insert expenditures]</td> */}
+                </tr>
+                </thead>
+            </table>
+        </div>
         
-//         {/* <div>
-//              <Button primary onClick={() => transferValue(inputs)}>Click Child</Button>   
-//         </div> */}
-//     </>  
-//      )
-// }
+        {/* <div>
+             <Button primary onClick={() => transferValue(inputs)}>Click Child</Button>   
+        </div> */}
+    </>  
+     )
+}
 
-// export default StoreEntries
+export default StoreEntries
 
-// {/* <caption>
-// My amazing wifes income 
-// </caption> */}

@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 import './App.css'
 import ServiceField from './components/Service'
-import Child from './components/Child'
+// import Child from './components/Child'
 
 // https://dev.to/okafor__mary/how-to-dynamically-add-input-fields-on-button-click-in-reactjs-5298#:~:text=Create%20A%20React%20Component&text=First%2C%20we%20initialized%20the%20inputs,manage%20our%20input%20field%20values.
 
@@ -12,7 +12,7 @@ function App() {
     <>
       <h1>Money Hero</h1>
       <ServiceField/>
-      <Child />
+      {/* <Child /> */}
 
     </>
   )

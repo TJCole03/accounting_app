@@ -7,6 +7,13 @@ import { Button } from 'semantic-ui-react'
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
+
+
+
+
+
+
+
 // note to self: I need the program to be able to detect my inputs in the input fields. I 
 // need to research more into React hooks and see how to prevent instant rerenders 
 // AND be able to store my information in the index array
@@ -17,7 +24,7 @@ function ServiceField() {
     // const [inputs, setInputs] = useState([]);
     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
     const [date, setDate] = useState('')
-    const [service, setService] = useState('');
+    const [service, setService] = useState('')
     const [price, setPrice] = useState(0)
     // const index = useMemo(() => {
     // }, [])
@@ -93,7 +100,7 @@ function ServiceField() {
     
     const handleDate = (e) => {
         setDate({
-            ...[date], 
+            ...date, 
             date: e.target.value
         })
         if (date) {
@@ -101,16 +108,16 @@ function ServiceField() {
         }
     }
 
-    // const handleService = (e) => {
-    //     setService({
-    //         ...[service], 
-    //         service: e.target.value
-    //     })
-    // }
+    const handleService = (e) => {
+        setService({
+            ...service, 
+            service: e.target.value
+        })
+    }
 
     const handlePrice = (e) => {
         ({
-            ...[price], 
+            ...price, 
             price: e.target.value
         })
     }
@@ -156,7 +163,7 @@ function ServiceField() {
             </label>
                     {/* <button type="submit" onClick={transferValue}> Submit</button>  */}
             <Button primary type="submit"  >Submit</Button>
-                    <p> we got: [serviceIndex]</p>
+                    <p> we got: {date.date}{service.service}{price.price}</p>
                         
 
                 onClick={() => {transferValue(date, service, price)}}

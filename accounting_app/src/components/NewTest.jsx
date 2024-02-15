@@ -39,11 +39,23 @@ function ServiceField() {
     <>
       <label>
         Date:
-        <input value={inputs.date} onChange={handleDate} />
+        <input
+          type='Date'
+          value={inputs.date}
+          onChange={handleDate} />
       </label>
       <label>
         Service:
-        <input value={inputs.service} onChange={handleService} />
+        <select
+          value={inputs.service}
+          onChange={handleService}
+        >
+          <option />
+            {SERVICES.map((service) => (
+            <option key={service}>{service}
+          </option>
+            ))}
+        </select>
       </label>
       <label>
         Price:

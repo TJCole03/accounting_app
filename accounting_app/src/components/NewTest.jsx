@@ -11,16 +11,17 @@ function ServiceField() {
   const [inputs, setInputs] = useState({
     date: "",
     service: "",
-    price: "",
+    price: 0
   })
   const index = [inputs]
+  const table = {"date": [], 'service': [], 'price': 0}
 
   const handleSubmit = (e) => {
     // prevents browser from reloading data
         e.preventDefault();
     // read form data
         const form = e.target; 
-        const formData = new FormData()
+        const formData = new FormData(form)
 
     // you can pass formData as fetch body directly: 
     // fetch('/', { method: form.method, body: formData })
@@ -29,7 +30,7 @@ function ServiceField() {
     // OR you can work with it as a plain object
     const formJSON = Object.fromEntries(formData.entries())
         index.push(formJSON)
-        console.log(formJSON, 'formJSON', index, 'index')
+        console.log(formJSON, 'formJSON', index[0], 'index')
         console.log(index[0].date)
         console.log(index[0].service)
         console.log(index[0].price)
@@ -41,9 +42,10 @@ function ServiceField() {
   }
   const transferValue = (formJSON) => {
     // setInputs("This is data from Parent Component to the Child Component.");
-    if (inputs) {
-      inputs.push(index[1])
-      console.log(index, [index], index[1])
+    // if (inputs.date && inputs.service && inputs.price) {
+    if (index[0]) {
+      inputs.push(table)
+      console.log('look we have inputs')
     } else {
         console.log('still closer because you know this doesnt work')
     }

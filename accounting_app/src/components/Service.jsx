@@ -21,13 +21,9 @@
 // // https://www.geeksforgeeks.org/how-to-pass-data-into-table-from-a-form-using-react-components/
 
 // function ServiceField() {
-//     // const [inputs, setInputs] = useState([]);
-//     // const [inputs, setInputs] = useState([{Date: "", service: "", price: ""}]);
 //     const [date, setDate] = useState('')
 //     const [service, setService] = useState('')
 //     const [price, setPrice] = useState(0)
-//     // const index = useMemo(() => {
-//     // }, [])
 //     const dateIndex = [date]
 //     const serviceIndex = [service]
 //     const priceIndex = [price]

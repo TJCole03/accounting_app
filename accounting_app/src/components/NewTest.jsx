@@ -12,22 +12,27 @@ function ServiceField() {
     date: "",
     service: "",
     price: "",
-  });
+  })
+  const index = [inputs]
 
   const handleSubmit = (e) => {
     // prevents browser from reloading data
         e.preventDefault();
     // read form data
         const form = e.target; 
-        const formData = new FormData(form)
+        const formData = new FormData()
 
     // you can pass formData as fetch body directly: 
-        // fetch('/', { method: form.method, body: formData })
+    // fetch('/', { method: form.method, body: formData })
+    // console.log(formData, 'formData')
         
     // OR you can work with it as a plain object
     const formJSON = Object.fromEntries(formData.entries())
-        inputs.push(formJSON)
-        console.log(formJSON, 'formJSON')
+        index.push(formJSON)
+        console.log(formJSON, 'formJSON', index, 'index')
+        console.log(index[0].date)
+        console.log(index[0].service)
+        console.log(index[0].price)
         transferValue()
         // console.log(index)
         // console.log('formJson', [formJSON])
@@ -36,8 +41,9 @@ function ServiceField() {
   }
   const transferValue = (formJSON) => {
     // setInputs("This is data from Parent Component to the Child Component.");
-    if (inputs.date && inputs.service && inputs.price) {
-      console.log({ inputs })
+    if (inputs) {
+      inputs.push(index[1])
+      console.log(index, [index], index[1])
     } else {
         console.log('still closer because you know this doesnt work')
     }
@@ -82,14 +88,14 @@ function ServiceField() {
         <input
           type='Date'
           value={inputs.date}
-          onChange={handleDate}
+          onChange={(e) => handleDate(e, index)}
           action={transferValue}/>
       </label>
       <label>
         Service:
         <select
           value={inputs.service}
-          onChange={handleService}
+          onChange={(e) => handleService(e, index)}
           action={transferValue}
         >
           <option />
@@ -104,9 +110,10 @@ function ServiceField() {
         <input
           type='number'
           value={inputs.price}
-          onChange={handlePrice}
+          onChange={(e) => handlePrice(e, index)}
           action={transferValue}/>
-      </label>
+        </label>
+        <Button primary type='submit' onClick={() => {transferValue(inputs)}}>Submit</Button>
       {/* <p>
         {inputs.date} {inputs.service} {inputs.price}
       </p> */}
@@ -119,14 +126,15 @@ function ServiceField() {
                 {/* <th scope='col'>Spending</th> */}
                 </tr>
                 <tr>
-                    <th scope="row" >{inputs.date}  </th>  
-                    <td scope="row">{inputs.service} </td>
-                    <td scope="row">{inputs.price}</td>
+                    <th scope="row" >{index[0].date}  </th>  
+                    <td scope="row">{index[0].service} </td>
+                    <td scope="row">{index[0].price}</td>
                 {/* <td>[insert expenditures]</td> */}
                 </tr>
                 </thead>
       </table>
-        <Button primary type='submit' onClick={handleSubmit}>Submit</Button>
+
+
   </form> 
     </>
   );

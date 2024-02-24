@@ -129,10 +129,8 @@ function ServiceField() {
                 </tr>
                 <tr>
               <th scope="row" >{index[0].date}  </th>  
-                    <td scope="row">{index.map(inputs => {
-                      <input key={index[0].service}{...inputs}/>
-                    })}  </td>
-                    <td scope="row">{index[0].price}</td>
+              <th scope="row" >{index[0].service}  </th>  
+              <td scope="row">{index[0].price}</td>
                 {/* <td>[insert expenditures]</td> */}
                 </tr>
                 </thead>

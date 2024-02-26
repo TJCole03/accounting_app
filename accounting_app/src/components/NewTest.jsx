@@ -14,7 +14,7 @@ function ServiceField() {
     price: 0
   })
   const index = [inputs]
-  const table = {"date": [], 'service': [], 'price': 0}
+  // const table = {"date": [], 'service': [], 'price': 0}
 
   const handleSubmit = (e) => {
     // prevents browser from reloading data
@@ -33,32 +33,33 @@ function ServiceField() {
         console.log(formJSON, 'formJSON', index[0], 'index')
         console.log(index[0].date)
         console.log(index[0].service)
-        console.log(index[0].price)
-        transferValue()
+    console.log(index[0].price)
+        // clearState()
+        // transferValue()
         // console.log(index)
         // console.log('formJson', [formJSON])
      
 
   }
-  const transferValue = (formJSON) => {
-    // setInputs("This is data from Parent Component to the Child Component.");
-    // if (inputs.date && inputs.service && inputs.price) {
-    if (index[0]) {
-      inputs.push(table)
-      console.log('look we have inputs')
-    } else {
-        console.log('still closer because you know this doesnt work')
-    }
-    setInputs({formJSON})
-    clearState()
-  }
+  // const transferValue = (formJSON) => {
+  //   // setInputs("This is data from Parent Component to the Child Component.");
+  //   // if (inputs.date && inputs.service && inputs.price) {
+  //   if (index[0]) {
+  //     // inputs.push(table)
+  //     console.log('look we have inputs', index[0])
+  //   } else {
+  //       console.log('still closer because you know this doesnt work')
+  //   }
+  //   setInputs({formJSON})
+  //   clearState()
+  // }
   
-  const clearState = () => {
-    // setDate('')
-    // setService('');
-    // setPrice(0);
-    setInputs({date: "", service: "", price: 0})
-};
+//   const clearState = () => {
+//     // setDate('')
+//     // setService('');
+//     // setPrice(0);
+//     setInputs({date: "", service: "", price: 0})
+// };
 
   function handleDate(e) {
     setInputs({
@@ -91,14 +92,14 @@ function ServiceField() {
           type='Date'
           value={inputs.date}
           onChange={(e) => handleDate(e, index)}
-          action={transferValue}/>
+          action={handleSubmit}/>
       </label>
       <label>
         Service:
         <select
           value={inputs.service}
           onChange={(e) => handleService(e, index)}
-          action={transferValue}
+          action={handleSubmit}
         >
           <option />
             {SERVICES.map((service) => (
@@ -113,9 +114,9 @@ function ServiceField() {
           type='number'
           value={inputs.price}
           onChange={(e) => handlePrice(e, index)}
-          action={transferValue}/>
+          action={handleSubmit}/>
         </label>
-        <Button primary type='submit' onClick={() => {transferValue(inputs)}}>Submit</Button>
+        <Button primary type='submit' onClick={() => {handleSubmit(inputs)}}>Submit</Button>
       {/* <p>
         {inputs.date} {inputs.service} {inputs.price}
       </p> */}

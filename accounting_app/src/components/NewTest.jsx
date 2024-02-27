@@ -29,13 +29,11 @@ function ServiceField() {
         
     // OR you can work with it as a plain object
     const formJSON = Object.fromEntries(formData.entries())
-        index.push(formJSON)
-        console.log(formJSON, 'formJSON', index[0], 'index')
-        console.log(index[0].date)
-        console.log(index[0].service)
-    console.log(index[0].price)
+        index.push(inputs)
+        console.log(formJSON, 'formJSON', index, 'index')
+        console.log(index[0])
         // clearState()
-        // transferValue()
+        transferValue()
         // console.log(index)
         // console.log('formJson', [formJSON])
      

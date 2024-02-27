@@ -41,25 +41,25 @@ function ServiceField() {
      
 
   }
-  // const transferValue = (formJSON) => {
-  //   // setInputs("This is data from Parent Component to the Child Component.");
-  //   // if (inputs.date && inputs.service && inputs.price) {
-  //   if (index[0]) {
-  //     // inputs.push(table)
-  //     console.log('look we have inputs', index[0])
-  //   } else {
-  //       console.log('still closer because you know this doesnt work')
-  //   }
-  //   setInputs({formJSON})
-  //   clearState()
-  // }
+  const transferValue = (formJSON) => {
+    // setInputs("This is data from Parent Component to the Child Component.");
+    // if (inputs.date && inputs.service && inputs.price) {
+    if (index[0]) {
+      // inputs.push(table)
+      console.log('look we have inputs', index[0])
+    } else {
+        console.log('still closer because you know this doesnt work')
+    }
+    setInputs({formJSON})
+    clearState()
+  }
   
-//   const clearState = () => {
-//     // setDate('')
-//     // setService('');
-//     // setPrice(0);
-//     setInputs({date: "", service: "", price: 0})
-// };
+  const clearState = () => {
+    // setDate('')
+    // setService('');
+    // setPrice(0);
+    setInputs({date: "", service: "", price: 0})
+};
 
   function handleDate(e) {
     setInputs({
@@ -92,14 +92,14 @@ function ServiceField() {
           type='Date'
           value={inputs.date}
           onChange={(e) => handleDate(e, index)}
-          action={handleSubmit}/>
+          action={transferValue}/>
       </label>
       <label>
         Service:
         <select
           value={inputs.service}
           onChange={(e) => handleService(e, index)}
-          action={handleSubmit}
+          action={transferValue}
         >
           <option />
             {SERVICES.map((service) => (
@@ -114,9 +114,9 @@ function ServiceField() {
           type='number'
           value={inputs.price}
           onChange={(e) => handlePrice(e, index)}
-          action={handleSubmit}/>
+          action={transferValue}/>
         </label>
-        <Button primary type='submit' onClick={() => {handleSubmit(inputs)}}>Submit</Button>
+        <Button primary type='submit' onClick={() => {transferValue(inputs)}}>Submit</Button>
       {/* <p>
         {inputs.date} {inputs.service} {inputs.price}
       </p> */}

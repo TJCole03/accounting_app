@@ -83,8 +83,9 @@ export default function ServiceField() {
   return (
   <>
 
-        <StoreEntries />
-        <Button primary type='submit' onClick={() => {transferValue(inputs)}}>Submit</Button>
+      <StoreEntries />
+      <Button primary type='submit' onClick={() => { handleSubmit(inputs) }} > Submit </Button> 
+
       <p>
         {index[0].date} {index[0].service} {index[0].price}
       </p>
@@ -93,7 +94,3 @@ export default function ServiceField() {
     </>
   );
 }
-
-
-
-

@@ -2,18 +2,41 @@ import {useState} from "react"
 import {Button} from 'semantic-ui-react'
 // import ServiceField from "./NewTest"
 // import {index} from './NewTest'
-
-async function StoreEntries() {
-
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
-  const [inputs, setInputs] = useState({
-    date: "",
-    service: "",
-    price: 0
-  })
-  const index = [inputs]
 
+function StoreEntries() {
+const [inputs, setInputs] = useState({
+        date: "",
+        service: "",
+        price: 0
+      })
+    const index = [inputs]
+
+
+const transferValue = (formJSON) => {
+        // setInputs("This is data from Parent Component to the Child Component.");
+        // if (inputs.date && inputs.service && inputs.price) {
+    if (index[0]) {
+          // inputs.push(table)
+          console.log('look we have inputs', index[0])
+    } else {
+            console.log('still closer because you know this doesnt work')
+    }
+    setInputs({formJSON})
+    clearState()
+    }
+      
+    const clearState = () => {
+        // setDate('')
+        // setService('');
+        // setPrice(0);
+     setInputs({date: "", service: "", price: 0})
+};
+
+
+
+    
   function handleDate(e) {
     setInputs({
       ...inputs,
@@ -92,7 +115,7 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
         </div>
         
         <div>
-                <Button primary onClick={() => console.log('clicked')}>Click Child</Button>   
+                <Button primary onClick={() => { transferValue(inputs) }}>Click Child</Button>   
         </div>
     </>  
      )

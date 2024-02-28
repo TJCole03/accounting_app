@@ -1,13 +1,13 @@
 // import React from 'react'
-import { useMemo, useState } from "react";
-// import StoreEntries from "./StoreEntries";
+import {  useState } from "react";
+import StoreEntries from "./StoreEntries";
 import { Button } from 'semantic-ui-react'
 // import { findDOMNode } from 'react-dom'
 // import PropTypes from 'semantic-ui-react'
-const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
+// const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
-function ServiceField() {
+export default function ServiceField() {
   const [inputs, setInputs] = useState({
     date: "",
     service: "",
@@ -59,87 +59,41 @@ function ServiceField() {
     setInputs({date: "", service: "", price: 0})
 };
 
-  function handleDate(e) {
-    setInputs({
-      ...inputs,
-      date: e.target.value,
-    });
-  }
+  // function handleDate(e) {
+  //   setInputs({
+  //     ...inputs,
+  //     date: e.target.value,
+  //   });
+  // }
 
-  const handleService = (e) => {
-    setInputs({
-      ...inputs,
-      service: e.target.value,
-    });
-  };
+  // const handleService = (e) => {
+  //   setInputs({
+  //     ...inputs,
+  //     service: e.target.value,
+  //   });
+  // };
 
-  const handlePrice = (e) => {
-    setInputs({
-      ...inputs,
-      price: e.target.value,
-    });
-  };
+  // const handlePrice = (e) => {
+  //   setInputs({
+  //     ...inputs,
+  //     price: e.target.value,
+  //   });
+  // };
 
   return (
   <>
-    <form method="post" onSubmit={handleSubmit}>
 
-      <label>
-        Date:
-        <input
-          type='Date'
-          value={inputs.date}
-          onChange={(e) => handleDate(e, index)}
-          action={transferValue}/>
-      </label>
-      <label>
-        Service:
-        <select
-          value={inputs.service}
-          onChange={(e) => handleService(e, index)}
-          action={transferValue}
-        >
-          <option />
-            {SERVICES.map((service) => (
-            <option key={service}>{service}
-          </option>
-            ))}
-        </select>
-      </label>
-      <label>
-        Price:
-        <input
-          type='number'
-          value={inputs.price}
-          onChange={(e) => handlePrice(e, index)}
-          action={transferValue}/>
-        </label>
+        <StoreEntries />
         <Button primary type='submit' onClick={() => {transferValue(inputs)}}>Submit</Button>
-      {/* <p>
-        {inputs.date} {inputs.service} {inputs.price}
-      </p> */}
-      <table>
-                <thead>
-                <tr>
-                    <th scope='col'>  Date  </th>
-                    <th scope='col'>  Service  </th>
-                    <th scope='col'>  Gross Earnings  </th>
-                {/* <th scope='col'>Spending</th> */}
-                </tr>
-                <tr>
-              <th scope="row" >{index[0].date}  </th>  
-              <th scope="row" >{index[0].service}  </th>  
-              <td scope="row">{index[0].price}</td>
-                {/* <td>[insert expenditures]</td> */}
-                </tr>
-                </thead>
-      </table>
+      <p>
+        {index[0].date} {index[0].service} {index[0].price}
+      </p>
 
 
-  </form> 
     </>
   );
 }
 
-export default ServiceField;
+
+
 

@@ -48,7 +48,8 @@ export default function ServiceField() {
     } else {
         console.log('still closer because you know this doesnt work')
     }
-    setInputs({formJSON})
+    setInputs({ formJSON })
+    handleSubmit()
     clearState()
   }
   

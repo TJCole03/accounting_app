@@ -2,12 +2,12 @@ import React from 'react'
 import { useState } from "react";
 // import StoreEntries from "./StoreEntries";
 import { Button } from 'semantic-ui-react'
-// import { findDOMNode } from 'react-dom'
+import { findDOMNode } from 'react-dom'
 // import PropTypes from 'semantic-ui-react'
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
-export default function ServiceField() {
+ function ServiceField() {
     // const [inputs, setInputs] = useState({
     //     date: "",
     //     service: "",
@@ -33,7 +33,7 @@ export default function ServiceField() {
         setPrice(e.target.value,);
           
         
-        const superman = (e) => {
+        function transferValue(e) {
             e.preventDefault()
             const val = {
                 date, 
@@ -89,10 +89,12 @@ export default function ServiceField() {
           />
         </label>        
         </form>
-     <Button primary type='submit' onClick={() => { superman}} > Submit </Button> 
-     {/* <button onClick={superman}> Click Me</button> */}
+     <Button primary type='submit' onClick={() => { transferValue}} > Submit </Button> 
+     {/* <button onClick={transferValue}> Click Me</button> */}
 
         </>
     
     )
 }    
+
+export default ServiceField

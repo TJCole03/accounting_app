@@ -1,6 +1,6 @@
 // import { table } from "console";
 import { useState } from "react";
-import ServiceField from "./TryAgain";
+import ServiceField from "./ServiceField";
 import jsonData from './data.json'
 
 function TableData() {

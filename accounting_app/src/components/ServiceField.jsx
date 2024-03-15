@@ -33,25 +33,38 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
         setPrice(e.target.value,);
           
     }    
-        function transferValue(e) {
-            e.preventDefault()
-            const val = {
-                date, 
-                service, 
-                price
-            };
-            props.func(val)
-            handleDate()
-            handleService()
-            handlePrice()
-            clearState()
-        }
+    // function transferValue(e) {
+    //         e.preventDefault()
+    //         const val = {
+    //             date, 
+    //             service, 
+    //             price
+    //         };
+    //         // props.func(val)
+    //         handleDate(val)
+    //         handleService(val)
+    //         handlePrice(val)
+    //         clearState()
+    // }
+
+    const transferValue = (formJSON) => {
+      // setInputs("This is data from Parent Component to the Child Component.");
+      if (date && service && price) {
+          console.log({date, service, price})
+      } else {
+          console.log('piss')
+      }
+      setDate({formJSON});
+      setService({formJSON});
+      setPrice({formJSON});
+      clearState()
+  }
           
-        const clearState = () => {
-            setDate('')
-            setService('');
-            setPrice(0);
-        }
+    const clearState = () => {
+        setDate('')
+        setService('');
+        setPrice(0);
+    }
 
 
    
@@ -89,8 +102,8 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
           />
         </label>        
         </form>
-     <Button primary type='submit' onClick={() => { transferValue}} > Submit </Button> 
-     {/* <button onClick={transferValue}> Click Me</button> */}
+     {/* <Button primary type='submit' onClick={() => { transferValue}} > Submit </Button>  */}
+     <button onClick={transferValue}> Click Me</button>
 
         </>
     

@@ -1,8 +1,10 @@
 // import { useState } from 'react'
+// import { Tab } from 'semantic-ui-react'
 import './App.css'
 // import ServiceField from './components/Service'
 // import NewTest from './components/NewTest'
-import TryAgain from './components/ServiceField'
+import ServiceField from './components/ServiceField'
+// import TableData from './components/Table'
 
 // https://dev.to/okafor__mary/how-to-dynamically-add-input-fields-on-button-click-in-reactjs-5298#:~:text=Create%20A%20React%20Component&text=First%2C%20we%20initialized%20the%20inputs,manage%20our%20input%20field%20values.
 
@@ -14,7 +16,8 @@ function App() {
       <h1>Money Hero</h1>
       {/* <ServiceField/> */}
       {/* <NewTest /> */}
-      <TryAgain />
+      <ServiceField />
+      {/* <TableData /> */}
 
     </>
   )

@@ -1,13 +1,14 @@
 // import {transferValue} from 'react'
 import { useState } from "react";
 // import StoreEntries from "./StoreEntries";
-import { Button } from 'semantic-ui-react'
+// import { Button, Tab, Table } from 'semantic-ui-react'
 // import { findDOMNode } from 'react-dom'
 // import PropTypes from 'semantic-ui-react'
+// import TableData from "./Table";
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
- function ServiceField(props) {
+ function ServiceField() {
     // const [inputs, setInputs] = useState({
     //     date: "",
     //     service: "",
@@ -104,7 +105,7 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
         </form>
      {/* <Button primary type='submit' onClick={() => { transferValue}} > Submit </Button>  */}
      <button onClick={transferValue}> Click Me</button>
-
+      {/* <TableData /> */}
         </>
     
     )

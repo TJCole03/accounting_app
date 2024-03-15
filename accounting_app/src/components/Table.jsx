@@ -1,8 +1,8 @@
-// import { table } from "console";
-import { useState } from "react";
+/* eslint-disable react/jsx-key */
+import React, { useState } from "react";
 import ServiceField from "./ServiceField";
-import jsonData from './data.json'
-
+import jsonData from "./data.json"
+ 
 function TableData() {
     const [transactionData, setTransactionData] = useState(jsonData)
 
@@ -24,6 +24,8 @@ function TableData() {
         updatedTransData.push(data)
         setTransactionData(updatedTransData)
     }
+
+    
 
     return (
         <div>

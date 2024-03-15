@@ -1,13 +1,13 @@
-import React from 'react'
+// import {transferValue} from 'react'
 import { useState } from "react";
 // import StoreEntries from "./StoreEntries";
 import { Button } from 'semantic-ui-react'
-import { findDOMNode } from 'react-dom'
+// import { findDOMNode } from 'react-dom'
 // import PropTypes from 'semantic-ui-react'
 const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Mediumship', 'Reiki Attunement', 'Tarot Class', 'Event/Retreat Payment']
 
 
- function ServiceField() {
+ function ServiceField(props) {
     // const [inputs, setInputs] = useState({
     //     date: "",
     //     service: "",
@@ -32,7 +32,7 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
         e.preventDefault();
         setPrice(e.target.value,);
           
-        
+    }    
         function transferValue(e) {
             e.preventDefault()
             const val = {
@@ -54,7 +54,7 @@ const SERVICES = ['Reiki (in-person)', 'Reiki (distance)', 'Tarot Reading', 'Med
         }
 
 
-    }
+   
     return (
         <>
          <form>

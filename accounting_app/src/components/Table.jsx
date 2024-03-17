@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React, { useState } from "react";
+import { useState } from "react";
 import ServiceField from "./ServiceField";
 import jsonData from "./data.json"
  
